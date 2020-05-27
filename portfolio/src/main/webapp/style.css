@@ -13,10 +13,29 @@
     width: 75%
 }
 
+#title > * {
+  display: inline;
+}
+
+#title > a {
+  text-decoration: none;
+}
+
+.title-icon {
+  width: 3em;
+  padding-left: 1em;
+}
+
 /* elements */
 body {
   background-color: antiquewhite;
   font-family: 'Open Sans', sans-serif;
+  width: 80%;
+
+}
+
+h1 {
+  font-size: 3em;
 }
 
 p {
