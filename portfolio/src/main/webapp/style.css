@@ -38,6 +38,15 @@ h1 {
   font-size: 3em;
 }
 
-p {
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+p, li {
     font-family: 'Lato', sans-serif;
+    font-size: 1.5em;
 }
