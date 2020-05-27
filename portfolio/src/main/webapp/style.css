@@ -7,3 +7,11 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+#avatar {
+    width: 75%
+}
+
+body {
+  background-color: antiquewhite
+}
