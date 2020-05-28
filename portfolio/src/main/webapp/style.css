@@ -43,7 +43,6 @@
 
 /* classes */
 .section {
-  display: inline-block;
   padding: 1% 20% 1%;
   background-color: wheat;
 }
