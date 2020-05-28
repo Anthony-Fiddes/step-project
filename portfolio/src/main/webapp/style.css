@@ -1,9 +1,4 @@
 /* IDs */
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-}
 
 #greeting-container {
   margin-top: 20px;
@@ -21,6 +16,38 @@
   text-decoration: none;
 }
 
+#introduction{
+    background-color: #FAEBD7;
+}
+
+#education{
+    background-color: #F5DEB3;
+}
+
+#experience{
+    background-color: #CEB088;
+}
+
+#projects{
+    background-color: #967A76;
+}
+
+#fun-stuff{
+    background-color: #534C5A;
+    color: #534C5A;
+}
+
+#fun-stuff:hover{
+  color: white;
+}
+
+/* classes */
+.section {
+  display: inline-block;
+  padding: 1% 20% 1%;
+  background-color: wheat;
+}
+
 .title-icon {
   width: 3em;
   padding-left: 1em;
@@ -31,6 +58,7 @@ body {
   background-color: antiquewhite;
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
+  margin: 0;
 }
 
 h1 {
