@@ -4,15 +4,11 @@
   margin-top: 20px;
 }
 
-#avatar {
-    width: 20em;
-}
-
-#title > * {
+.title > h1, a {
   display: inline;
 }
 
-#title > a {
+.title > a {
   text-decoration: none;
 }
 
@@ -42,6 +38,10 @@
 }
 
 /* classes */
+.avatar {
+  width: 20em;
+}
+
 .section {
   padding: 1% 20% 1%;
   background-color: wheat;
