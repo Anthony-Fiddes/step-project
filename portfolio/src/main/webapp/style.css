@@ -1,7 +1,7 @@
-/* IDs */
-
-#greeting-container {
-  margin-top: 20px;
+/* content sections */
+.section {
+  padding: 1% 20% 1%;
+  background-color: wheat;
 }
 
 .title > h1, a {
@@ -10,6 +10,10 @@
 
 .title > a {
   text-decoration: none;
+}
+
+.avatar {
+  width: 20em;
 }
 
 #introduction{
@@ -37,19 +41,9 @@
   color: white;
 }
 
-/* classes */
-.avatar {
-  width: 20em;
-}
-
-.section {
-  padding: 1% 20% 1%;
-  background-color: wheat;
-}
-
 .title-icon {
   width: 3em;
-  padding-left: 1em;
+  margin-left: 1em;
 }
 
 /* elements */
