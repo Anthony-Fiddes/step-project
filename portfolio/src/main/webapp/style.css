@@ -1,6 +1,13 @@
 /* content sections */
+@media (min-width: 700px){
+  .section {
+    padding: 1% 20% 1%;
+    background-color: wheat;
+  }
+}
+
 .section {
-  padding: 1% 20% 1%;
+  padding: 1% 5% 1%;
   background-color: wheat;
 }
 
