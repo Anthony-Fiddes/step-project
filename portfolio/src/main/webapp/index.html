@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
-<body>
+<body onload="getComments()">
 <div id="content">
   <div class="section" id="introduction">
     <div id="title">
@@ -113,6 +113,10 @@
     <p>
       The name is subject to change to become more interesting.
     </p>
+  </div>
+  <div class="section" id="comments">
+    <h1>Comments</h1>
+    <div id="comments-container"></div>
   </div>
   <div class="section" id="fun-stuff">
     <h1>Fun Stuff</h1>
