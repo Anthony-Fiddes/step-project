@@ -16,7 +16,13 @@
  * Adds comments from /data
  */
 async function getComments() {
-    const commentsData = await fetch("/data");
-    const comments = await commentsData.text();
-    document.getElementById("comments-container").innerHTML = comments;
+  const commentsData = await fetch("/data");
+  const comments = await commentsData.json();
+  let ul = document.createElement("ul");
+  for (let i = 0; i < comments.length; i++) {
+    let li = document.createElement("li");
+    li.innerText = comments[i];
+    ul.appendChild(li);
+  }
+  document.getElementById("comments-container").appendChild(ul);
 }
