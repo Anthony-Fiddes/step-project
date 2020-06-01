@@ -1,19 +1,26 @@
-/* IDs */
-
-#greeting-container {
-  margin-top: 20px;
+/* content sections */
+@media (min-width: 700px){
+  .section {
+    padding: 1% 20% 1%;
+    background-color: wheat;
+  }
 }
 
-#avatar {
-    width: 40%;
+.section {
+  padding: 1% 5% 1%;
+  background-color: wheat;
 }
 
-#title > * {
+.title > h1, a {
   display: inline;
 }
 
-#title > a {
+.title > a {
   text-decoration: none;
+}
+
+.avatar {
+  width: 20em;
 }
 
 #introduction{
@@ -41,16 +48,9 @@
   color: white;
 }
 
-/* classes */
-.section {
-  display: inline-block;
-  padding: 1% 20% 1%;
-  background-color: wheat;
-}
-
 .title-icon {
   width: 3em;
-  padding-left: 1em;
+  margin-left: 1em;
 }
 
 /* elements */
