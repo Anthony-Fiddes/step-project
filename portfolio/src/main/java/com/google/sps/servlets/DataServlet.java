@@ -40,13 +40,26 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String maxContent = request.getParameter("max");
+    int maxComments;
+    try {
+      maxComments = Integer.parseInt(maxContent);
+    } catch (NumberFormatException e) {
+      System.err.println("Could not convert to int: " + maxContent);
+      return;
+    }
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
     List<String> messages = new ArrayList<>();
+    int numComments = 0;
     for (Entity entity : results.asIterable()) {
+      if (numComments >= maxComments) {
+        break;
+      }
       String content = (String) entity.getProperty("content");
       messages.add(content);
+      numComments++;
     }
     Gson gson = new Gson();
     String json = gson.toJson(messages);
