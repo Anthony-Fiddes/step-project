@@ -23,28 +23,28 @@
   width: 20em;
 }
 
-#introduction{
+.introduction{
     background-color: #FAEBD7;
 }
 
-#education{
+.education{
     background-color: #F5DEB3;
 }
 
-#experience{
+.experience{
     background-color: #CEB088;
 }
 
-#projects{
+.projects{
     background-color: #967A76;
 }
 
-#fun-stuff{
+.fun-stuff{
     background-color: #534C5A;
     color: #534C5A;
 }
 
-#fun-stuff:hover{
+.fun-stuff:hover{
   color: white;
 }
 

@@ -6,9 +6,9 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
-<body>
+<body onload="getComments()">
 <div id="content">
-  <div class="section" id="introduction">
+  <div class="section introduction">
     <div class="title">
       <h1>Anthony Fiddes</h1>
       <a href="https://github.com/Anthony-Fiddes">
@@ -34,7 +34,7 @@
         class="avatar"
         alt="A cute picture of Anthony and his partner in California">
   </div>
-  <div class="section" id="education">
+  <div class="section education">
     <h1>Education</h1>
     <h2>Emory University - 3.87 GPA</h2>
     <h3>Graduating May 2022</h2>
@@ -60,7 +60,7 @@
       Sociology, and Psychology.
     </p>
   </div>
-  <div class="section" id="experience">
+  <div class="section experience">
     <h1>Experience</h1>
     <h2>Google, WFH - Student Training in Engineering Program Intern</h2>
     <h3>05/20 - Now</h3>
@@ -90,7 +90,7 @@
       <li>Worked at a help desk, troubleshooting IT issues in person and over the phone.</li>
     </ul>
   </div>
-  <div class="section" id="projects">
+  <div class="section projects">
     <h1>Projects</h1>
     <h2>Fare-Comparison</h2>
     <p>
@@ -113,6 +113,10 @@
     <p>
       The name is subject to change to become more interesting.
     </p>
+  </div>
+  <div class="section comments">
+    <h1>Comments</h1>
+    <div id="comments-container"></div>
   </div>
   <div class="section" id="fun-stuff">
     <h1>Fun Stuff</h1>
