@@ -21,10 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> 357f4aab84af1746bbe36443f4a54f454ab7e4e1
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
