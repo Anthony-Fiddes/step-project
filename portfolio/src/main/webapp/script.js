@@ -16,7 +16,9 @@
  * Adds comments from /data
  */
 async function getComments() {
-  const commentsData = await fetch("/data?max=5");
+  document.getElementById("comments-container").innerHTML = "";
+  max = document.getElementById("max").value
+  const commentsData = await fetch("/data?max=" + max);
   const comments = await commentsData.json();
   const ul = document.createElement("ul");
   for (let i = 0; i < comments.length; i++) {

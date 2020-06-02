@@ -116,7 +116,16 @@
   </div>
   <div class="section" id="comments">
     <h1>Comments</h1>
-    <div id="comments-container"></div>
+      <form onchange="getComments()">
+        <label for="max">Number of Comments to Display:</label>
+        <select id="max" name="max" value="5">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="100">100</option>
+        </select>
+      </form>
+      <div id="comments-container"></div>
     <form action="/data" method="POST">
       <textarea name="content" placeholder="Comment..."></textarea>
       <br>

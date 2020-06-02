@@ -68,15 +68,15 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String content = request.getParameter("content").trim();
     long timestamp = System.currentTimeMillis();
-    if (content.length() == 0) {
+    if (content.length() > 0) {
+      Entity commentEntity = new Entity("Comment");
+      commentEntity.setProperty("content", content);
+      commentEntity.setProperty("timestamp", timestamp);
+      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      datastore.put(commentEntity);
+    } else { 
       System.err.println("Empty comment submitted");
-      return;
     }
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("content", content);
-    commentEntity.setProperty("timestamp", timestamp);
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
     response.sendRedirect("/#comments");
   }
 }
