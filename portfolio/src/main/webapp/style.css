@@ -77,3 +77,12 @@ p, li {
     font-family: 'Lato', sans-serif;
     font-size: 1.5em;
 }
+
+textarea, input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea {
+  min-width: 50%;
+}
