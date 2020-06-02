@@ -21,20 +21,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  static final String CONTENT_TYPE = "application/json;";
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> messages = new ArrayList<String>();
+    List messages = new ArrayList<String>();
     messages.add("Nice portfolio!");
     messages.add("I found the fun stuff ;)");
     messages.add("Bark!");
     Gson gson = new Gson();
     String json = gson.toJson(messages);
-    response.setContentType("application/json;");
+    response.setContentType(CONTENT_TYPE);
     response.getWriter().println(json);
   }
 }
