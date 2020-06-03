@@ -28,3 +28,10 @@ async function getComments() {
   }
   document.getElementById("comments-container").appendChild(ul);
 }
+
+async function deleteComments() {
+  const response = await fetch("/delete-data", {
+    method: "POST",
+  });
+  getComments();
+}
