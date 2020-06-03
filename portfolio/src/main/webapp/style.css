@@ -78,7 +78,7 @@ p, li {
     font-size: 1.5em;
 }
 
-textarea, input, select, label {
+textarea, input, select, label, button {
   font-family: inherit;
   font-size: 1.3em;
 }
