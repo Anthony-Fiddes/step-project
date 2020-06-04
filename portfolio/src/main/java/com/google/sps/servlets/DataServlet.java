@@ -31,7 +31,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    List messages = new ArrayList<String>();
+    List<String> messages = new ArrayList<>();
     messages.add("Nice portfolio!");
     messages.add("I found the fun stuff ;)");
     messages.add("Bark!");
