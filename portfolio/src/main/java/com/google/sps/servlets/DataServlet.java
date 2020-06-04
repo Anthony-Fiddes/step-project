@@ -47,9 +47,9 @@ public class DataServlet extends HttpServlet {
     if (comment.isEmpty()) {
       System.err.println("Empty comment submitted");
       response.sendError(400, "Empty comment submitted");
-    } else {
-      messages.add(comment);
+      return;
     }
+    messages.add(comment);
     response.sendRedirect("/#comments");
   }
 }
