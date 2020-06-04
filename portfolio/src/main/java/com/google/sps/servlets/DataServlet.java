@@ -61,13 +61,13 @@ public class DataServlet extends HttpServlet {
     if (content.isEmpty()) {
       System.err.println("Empty comment submitted");
       response.sendError(400, "Empty comment submitted");
-    } else {
-      Entity commentEntity = new Entity("Comment");
-      commentEntity.setProperty("content", content);
-      commentEntity.setProperty("timestamp", timestamp);
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-      datastore.put(commentEntity);
+      return;
     }
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("content", content);
+    commentEntity.setProperty("timestamp", timestamp);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
     response.sendRedirect("/#comments");
   }
 }
