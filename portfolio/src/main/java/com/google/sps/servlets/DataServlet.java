@@ -30,8 +30,8 @@ import java.util.List;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  static final String CONTENT_TYPE = "application/json";
-  final List<String> messages = new ArrayList<>();
+  private static final String CONTENT_TYPE = "application/json";
+  private final List<String> messages = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
