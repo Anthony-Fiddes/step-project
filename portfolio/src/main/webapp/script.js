@@ -19,9 +19,9 @@ async function getComments() {
   max = document.getElementById("max").value
   const commentsData = await fetch("/data?max=" + max);
   const comments = await commentsData.json();
-  const ul = document.createElement("ul");
+  const ul = document.createElement('ul');
   for (let i = 0; i < comments.length; i++) {
-    let li = document.createElement("li");
+    const li = document.createElement('li');
     li.innerText = comments[i];
     ul.appendChild(li);
   }

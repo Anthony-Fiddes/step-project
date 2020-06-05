@@ -152,6 +152,10 @@
   }
 }
 
+.comments-box {
+  min-width: 50%;
+}
+
 .fun-stuff{
     background-color: #534C5A;
     color: #534C5A;
@@ -189,8 +193,4 @@ p, li {
 textarea, input, select, label, button {
   font-family: inherit;
   font-size: 1.3em;
-}
-
-textarea {
-  min-width: 50%;
 }
