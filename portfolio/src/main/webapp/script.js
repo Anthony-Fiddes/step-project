@@ -19,9 +19,9 @@ async function getComments() {
   const commentsData = await fetch('/data');
   const comments = await commentsData.json();
   const ul = document.createElement('ul');
-  for (let i = 0; i < comments.length; i++) {
+  for (const comment of comments) {
     const li = document.createElement('li');
-    li.innerText = comments[i];
+    li.innerText = comment;
     ul.appendChild(li);
   }
   document.getElementById('comments-container').appendChild(ul);
