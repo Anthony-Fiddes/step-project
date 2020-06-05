@@ -1,144 +1,168 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="UTF-8">
   <title>Anthony Fiddes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap"
+        rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
+
 <body onload="getComments()">
-<div id="content">
-  <div class="section introduction">
-    <div class="title">
-      <h1>Anthony Fiddes</h1>
-      <a href="https://github.com/Anthony-Fiddes">
-        <img 
-            class="title-icon"
-            src="./images/logos/GitHub-Mark-64px.png"
-            alt="">
-      </a>
-      <a href="https://www.linkedin.com/in/anthony-fiddes-306114149/">
-        <img 
-            class="title-icon"
-            src="./images/logos/LI-In-Bug.png"
-            alt="">
-      </a>
+  <div id="content">
+    <div class="section introduction">
+      <div class="title">
+        <h1>Anthony Fiddes</h1>
+        <a href="https://github.com/Anthony-Fiddes">
+          <img
+               class="title-icon"
+               src="./images/logos/GitHub-Mark-64px.png"
+               alt="GitHub logo with link to Anthony's GitHub">
+        </a>
+        <a href="https://www.linkedin.com/in/anthony-fiddes-306114149/">
+          <img
+               class="title-icon"
+               src="./images/logos/LI-In-Bug.png"
+               alt="LinkedIn logo with link to Anthony's LinkedIn">
+        </a>
+      </div>
+      <p>
+        I'm an aspiring software engineer with a passion for figuring out how to
+        create simple, elegant code! My current weapon of choice is Go, but I
+        also enjoy working in Python or whatever the project demands!
+      </p>
+      <img
+           src="./images/a_and_s_collage.jpg"
+           class="avatar"
+           alt="A cute picture of Anthony and his partner in California">
     </div>
-    <p>
-      I'm an aspiring software engineer with a passion for figuring out how to 
-      create simple, elegant code! My current weapon of choice is Go, but I also 
-      enjoy working in Python or whatever the project demands!
-    </p>
-    <img 
-        src="./images/a_and_s_collage.jpg" 
-        class="avatar"
-        alt="A cute picture of Anthony and his partner in California">
-  </div>
-  <div class="section education">
-    <h1>Education</h1>
-    <h2>Emory University - 3.87 GPA</h2>
-    <h3>Graduating May 2022</h2>
-    <p>
-      I am pursuing a BS in Computer Science at Emory University. My coursework 
-      has primarily involved learning data structures and algorithms in Java and 
-      their underlying math and theory. They have also briefly addressed Assembly 
-      and C.
-    </p>
-    <h2>Relevant Coursework</h2>
-    <ul>
-      <li>CS170 - Introduction to Computer Science I</li>
-      <li>CS171 - Introduction to Computer Science II</li>
-      <li>CS224 - Foundations of Computer Science (Discrete math)</li>
-      <li>CS253 - Data Structures and Algorithms</li>
-      <li>CS255 - Computer Architecture and Machine Level Programming</li>
-      <li>MATH 111 - Calculus I</li>
-      <li>MATH 112 - Calculus II</li>
-      <li>MATH 221 - Linear Algebra</li>
-    </ul>
-    <p>
-      I use my extra credits to study humanities like Spanish, Linguistics, 
-      Sociology, and Psychology.
-    </p>
-  </div>
-  <div class="section experience">
-    <h1>Experience</h1>
-    <h2>Google, WFH - Student Training in Engineering Program Intern</h2>
-    <h3>05/20 - Now</h3>
-    <h2>Pitts Theology Library - Student Computer Support</h2>
-    <h3>08/19 - 05/20</h3>
-    <ul>
-      <li>Wrote web scraping scripts in Python to audit the Pitts Theology Library website.</li>
-      <li>Troubleshooted computer issues for patrons in person.</li>
-      <li>Regularly maintained printers, scanners, and computers.</li>
-    </ul>
-    <h2>Google, Chicago - Engineering Practicum Intern</h2>
-    <h3>05/19-08/20</h3>
-    <ul>
-      <li>
-        Created a production quality Dagger dependency analysis tool in Java with a small team for use by all of Google
-        Search. This required knowledge of Google’s internal development tools.
-      </li>
-      <li>Created a design document to extend the functionality of said tool.</li>
-      <li>Served on intern panels for CSSI Detroit, Chicago, and Atlanta.</li>
-      <li>Attended leadership, networking, allyship, and diversity panels at We Are GWE 2019.</li>
-    </ul>
-    <h2>Rollins School of Public Health, Atlanta - IT Student Tech</h2>
-    <h3>08/18-05/19</h3>
-    <ul>
-      <li>Used the ServiceNow support ticket system to help customers.</li>
-      <li>Moved, configured, wiped, cleaned, and imaged computers.</li>
-      <li>Worked at a help desk, troubleshooting IT issues in person and over the phone.</li>
-    </ul>
-  </div>
-  <div class="section projects">
-    <h1>Projects</h1>
-    <h2>Fare-Comparison</h2>
-    <p>
-      Fare Comparison is an AppEngine application that I contributed to while working in a team of three developers during
-      Google’s 2018 Computer Science Summer Institute in Atlanta. It served as a way to quickly and easily compare Lyft and
-      Uber prices for a given ride. It utilized Google APIs to implement location autocomplete, and to return a map of the
-      fastest route between the inputted source and destination locations. Python, HTML, CSS, and Javascript were all integral
-      tools.
-    </p>
-    <p>
-      Unfortunately, as a result of a change in Lyft and Uber’s API policies, Fare Comparison no longer functions as intended.
-    </p>
-    <h1>Coming Soon</h1>
-    <h2>Attention</h2>
-    <p>
-      A group of Go command line tools designed to help users with ADHD to measure and manage their symptoms. This project
-      will be heavily inspired by peer-reviewed literature. It will include tools for measuring distractibility, maintaining
-      focus on a particular task, and ordering tasks by priority.
-    </p>
-    <p>
-      The name is subject to change to become more interesting.
-    </p>
-  </div>
-  <div class="section" id="comments">
-    <h1>Comments</h1>
-    <div id="comments-container"></div>
-    <form action="/data" method="POST">
-      <textarea name="content" placeholder="Comment..."></textarea>
-      <br>
-      <input type="submit"/>
-    </form>
-  </div>
-  <div class="section fun-stuff">
-    <h1>Fun Stuff</h1>
-    <p>
-      You made it all the way to the bottom of my portfolio! Stay skeptical, sometimes the fun things in life require a bit of
-      digging :). Here are some things I probably wouldn’t include on a regular resume!
+    <div class="section education">
+      <h1>Education</h1>
+      <h2>Emory University - 3.87 GPA</h2>
+      <h3>Graduating May 2022</h2>
+        <p>
+          I am pursuing a BS in Computer Science at Emory University. My
+          coursework has primarily involved learning data structures and
+          algorithms in Java
+          and their underlying math and theory. They have also briefly addressed
+          Assembly and C.
+        </p>
+        <h2>Relevant Coursework</h2>
+        <ul>
+          <li>CS170 - Introduction to Computer Science I
+          <li>CS171 - Introduction to Computer Science II
+          <li>CS224 - Foundations of Computer Science (Discrete math)
+          <li>CS253 - Data Structures and Algorithms
+          <li>CS255 - Computer Architecture and Machine Level Programming
+          <li>MATH 111 - Calculus I
+          <li>MATH 112 - Calculus II
+          <li>MATH 221 - Linear Algebra
+        </ul>
+        <p>
+          I use my extra credits to study humanities like Spanish, Linguistics,
+          Sociology, and Psychology.
+        </p>
+    </div>
+    <div class="section experience">
+      <h1>Experience</h1>
+      <h2>Google, WFH - Student Training in Engineering Program Intern</h2>
+      <h3>05/20 - Now</h3>
+      <h2>Pitts Theology Library - Student Computer Support</h2>
+      <h3>08/19 - 05/20</h3>
       <ul>
-        <li>At my Google internship in Chicago, I learned how to juggle</li>
-        <li>I enjoy playing DnD, particularly homebrew versions</li>
-        <li>I have a significant interest in personal finance (budgeting, credit, retirement) and love to share what I know with the people around me when they ask</li>
-        <li>My mom is Jamaican, so I can understand a bit of our national language, Patois</li>
-        <li>I learned a lot of the sounds of Spanish growing up in North Miami Beach, but I couldn’t roll my r’s until I was 18! It took months of daily practice</li>
-        <li>I’ve been doing problems on Project Euler since I was 14, but I only completed my first problem with a difficulty higher than 5% at 19! To be fair, I wasn’t particularly dedicated</li>
-        <li>He tomado cinco clases de español en mi universidad. Mi español no está en el nivel de un nativo, ¡pero es bastante bueno para mi!</li>
-        <li>I earned the small scar I have on my face in a battle over a blankie I had when I was 5</li>
+        <li>Wrote web scraping scripts in Python to audit the Pitts Theology
+          Library website.
+        <li>Troubleshooted computer issues for patrons in person.
+        <li>Regularly maintained printers, scanners, and computers.
       </ul>
-    </p>
+      <h2>Google, Chicago - Engineering Practicum Intern</h2>
+      <h3>05/19-08/20</h3>
+      <ul>
+        <li>Created a production quality Dagger dependency analysis tool in Java
+          with a small team for use by all of Google Search. This required
+          knowledge of Google’s internal development tools.
+        <li>Created a design document to extend the functionality of said tool.
+        <li>Served on intern panels for CSSI Detroit, Chicago, and Atlanta.
+        <li>Attended leadership, networking, allyship, and diversity panels at
+          We Are GWE 2019.
+      </ul>
+      <h2>Rollins School of Public Health, Atlanta - IT Student Tech</h2>
+      <h3>08/18-05/19</h3>
+      <ul>
+        <li>Used the ServiceNow support ticket system to help customers.
+        <li>Moved, configured, wiped, cleaned, and imaged computers.
+        <li>Worked at a help desk, troubleshooting IT issues in person and over
+          the phone.
+      </ul>
+    </div>
+    <div class="section projects">
+      <h1>Projects</h1>
+      <h2>Fare-Comparison</h2>
+      <p>
+        Fare Comparison is an AppEngine application that I contributed to while
+        working in a team of three developers during Google’s 2018 Computer
+        Science Summer Institute in Atlanta. It served as a way to quickly and
+        easily compare Lyft and Uber prices for a given ride. It utilized Google
+        APIs to implement location autocomplete, and to return a map of the
+        fastest route between the inputted source and destination locations.
+        Python, HTML, CSS, and Javascript were all integral tools.
+      </p>
+      <p>
+        Unfortunately, as a result of a change in Lyft and Uber’s API policies,
+        Fare Comparison no longer functions as intended.
+      </p>
+      <h1>Coming Soon</h1>
+      <h2>Attention</h2>
+      <p>
+        A group of Go command line tools designed to help users with ADHD to
+        measure and manage their symptoms. This project will be heavily inspired
+        by peer-reviewed literature. It will include tools for measuring
+        distractibility, maintaining focus on a particular task, and ordering
+        tasks by priority.
+      </p>
+      <p>
+        The name is subject to change to become more interesting.
+      </p>
+    </div>
+    <div class="section" id="comments">
+      <h1>Comments</h1>
+      <div id="comments-container"></div>
+      <form action="/data" method="POST">
+        <textarea name="content" placeholder="Comment..."
+                  class="comments-box"></textarea>
+        <br>
+        <input type="submit" />
+      </form>
+    </div>
+    <div class="section fun-stuff">
+      <h1>Fun Stuff</h1>
+      <p>
+        You made it all the way to the bottom of my portfolio! Stay skeptical,
+        sometimes the fun things in life require a bit of digging :). Here are
+        some things I probably wouldn’t include on a regular resume!
+      <ul>
+        <li>At my Google internship in Chicago, I learned how to juggle
+        <li>I enjoy playing DnD, particularly homebrew versions
+        <li>I have a significant interest in personal finance (budgeting,
+          credit, retirement) and love to share what I
+          know with the people around me when they ask
+        <li>My mom is Jamaican, so I can understand a bit of our national
+          language, Patois
+        <li>I learned a lot of the sounds of Spanish growing up in North Miami
+          Beach, but I couldn’t roll my r’s until I
+          was 18! It took months of daily practice
+        <li>I’ve been doing problems on Project Euler since I was 14, but I only
+          completed my first problem with a
+          difficulty higher than 5% at 19! To be fair, I wasn’t particularly
+          dedicated
+        <li>He tomado cinco clases de español en mi universidad. Mi español no
+          está en el nivel de un nativo, ¡pero es
+          bastante bueno para mi!
+        <li>I earned the small scar I have on my face in a battle over a blankie
+          I had when I was 5
+      </ul>
+      </p>
+    </div>
   </div>
-</div>
 </body>

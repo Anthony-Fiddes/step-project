@@ -18,11 +18,11 @@
 async function getComments() {
   const commentsData = await fetch("/data?max=5");
   const comments = await commentsData.json();
-  const ul = document.createElement("ul");
+  const ul = document.createElement('ul');
   for (let i = 0; i < comments.length; i++) {
-    let li = document.createElement("li");
+    const li = document.createElement('li');
     li.innerText = comments[i];
     ul.appendChild(li);
   }
-  document.getElementById("comments-container").appendChild(ul);
+  document.getElementById('comments-container').appendChild(ul);
 }
