@@ -39,6 +39,10 @@
     background-color: #967A76;
 }
 
+.comments-box {
+  min-width: 50%;
+}
+
 .fun-stuff{
     background-color: #534C5A;
     color: #534C5A;
@@ -76,4 +80,9 @@ h3 {
 p, li {
     font-family: 'Lato', sans-serif;
     font-size: 1.5em;
+}
+
+textarea, input {
+  font-family: inherit;
+  font-size: inherit;
 }

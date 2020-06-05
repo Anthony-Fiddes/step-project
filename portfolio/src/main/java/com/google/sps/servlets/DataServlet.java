@@ -23,21 +23,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/**
+ * Servlet that returns some example content. TODO: modify this file to handle
+ * comments data
+ */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  static final String CONTENT_TYPE = "application/json;";
+  private static final String CONTENT_TYPE = "application/json";
+  private final List<String> messages = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    List<String> messages = new ArrayList<>();
-    messages.add("Nice portfolio!");
-    messages.add("I found the fun stuff ;)");
-    messages.add("Bark!");
     Gson gson = new Gson();
     String json = gson.toJson(messages);
     response.setContentType(CONTENT_TYPE);
     response.getWriter().println(json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String comment = request.getParameter("comment").trim();
+    if (comment.isEmpty()) {
+      System.err.println("Empty comment submitted");
+      response.sendError(400, "Empty comment submitted");
+      return;
+    }
+    messages.add(comment);
+    response.sendRedirect("/#comments");
   }
 }
