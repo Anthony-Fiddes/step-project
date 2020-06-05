@@ -36,7 +36,7 @@ import java.util.List;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  static final String CONTENT_TYPE = "application/json";
+  private static final String CONTENT_TYPE = "application/json";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
