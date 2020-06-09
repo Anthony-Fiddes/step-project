@@ -20,6 +20,9 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
 import com.google.gson.Gson;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -40,6 +43,7 @@ public class DataServlet extends HttpServlet {
   private static final String MAX_COMMENTS = "max";
   private static final String COMMENT = "Comment";
   private static final String CONTENT = "content";
+  private static final String LANGUAGE = "language";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -52,7 +56,9 @@ public class DataServlet extends HttpServlet {
       response.sendError(400, "Invalid request.");
       return;
     }
-    Query query = new Query(COMMENT).addSort("timestamp", SortDirection.DESCENDING);
+    String language = request.getParameter(LANGUAGE);
+    Translate translate = TranslateOptions.getDefaultInstance().getService();
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
     List<String> messages = new ArrayList<>();
@@ -61,7 +67,9 @@ public class DataServlet extends HttpServlet {
         break;
       }
       String content = (String) entity.getProperty(CONTENT);
-      messages.add(content);
+      Translation translation = translate.translate(content, Translate.TranslateOption.targetLanguage(language));
+      String translatedText = translation.getTranslatedText();
+      messages.add(translatedText);
     }
     Gson gson = new Gson();
     String json = gson.toJson(messages);

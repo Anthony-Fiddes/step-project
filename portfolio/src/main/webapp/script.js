@@ -17,7 +17,8 @@
  */
 async function getComments() {
   const max = document.getElementById('max').value;
-  const commentsData = await fetch('/data?max=' + max);
+  const language = document.getElementById('language').value;
+  const commentsData = await fetch('/data?max=' + max + '&language=' + language);
   const comments = await commentsData.json();
   const ul = document.createElement('ul');
   for (const comment of comments) {
