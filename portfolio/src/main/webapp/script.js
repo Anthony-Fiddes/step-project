@@ -26,13 +26,13 @@ async function getComments() {
     li.innerText = comment;
     ul.appendChild(li);
   }
-  document.getElementById("comments-container").innerHTML = "";
+  document.getElementById('comments-container').innerHTML = '';
   document.getElementById('comments-container').appendChild(ul);
 }
 
 async function deleteComments() {
-  await fetch("/delete-data", {
-    method: "POST",
+  await fetch('/delete-data', {
+    method: 'POST',
   });
   getComments();
 }
