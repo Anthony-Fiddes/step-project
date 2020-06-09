@@ -58,7 +58,7 @@ public class DataServlet extends HttpServlet {
       return;
     }
     String language = request.getParameter(LANGUAGE);
-    Translate translate = TranslateOptions.getDefaultInstance().getService();
+    Translate translateService = TranslateOptions.getDefaultInstance().getService();
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -68,20 +68,24 @@ public class DataServlet extends HttpServlet {
         break;
       }
       String content = (String) entity.getProperty(CONTENT);
-      try {
-        Translation translation = translate.translate(content, Translate.TranslateOption.targetLanguage(language));
-        String translatedText = translation.getTranslatedText();
-        messages.add(translatedText);
-      } catch (TranslateException e) {
-        System.err.println("Invalid translation options.");
-        response.sendError(400, "Invalid translation request.");
-        return;
-      }
+      messages.add(content);
     }
-    Gson gson = new Gson();
-    String json = gson.toJson(messages);
-    response.setContentType(CONTENT_TYPE);
-    response.getWriter().println(json);
+    try {
+      List<Translation> translations = translateService.translate(messages,
+          Translate.TranslateOption.targetLanguage(language));
+      messages.clear();
+      for (Translation translation : translations) {
+        messages.add(translation.getTranslatedText());
+      }
+      Gson gson = new Gson();
+      String json = gson.toJson(messages);
+      response.setContentType(CONTENT_TYPE);
+      response.getWriter().println(json);
+    } catch (TranslateException e) {
+      System.err.println("Invalid translation options.");
+      response.sendError(400, "Invalid translation request.");
+      return;
+    }
   }
 
   @Override
