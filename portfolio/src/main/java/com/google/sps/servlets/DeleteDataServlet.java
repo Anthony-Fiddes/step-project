@@ -28,9 +28,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/delete-data")
 public class DeleteDataServlet extends HttpServlet {
 
+  private static final String COMMENT = "Comment";
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Query query = new Query("Comment");
+    Query query = new Query(COMMENT);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
     for (Entity entity : results.asIterable()){
