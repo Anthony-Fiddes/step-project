@@ -16,17 +16,17 @@
  * Adds comments from /data
  */
 async function getComments() {
-  max = document.getElementById("max").value
-  const commentsData = await fetch("/data?max=" + max);
+  max = document.getElementById('max').value
+  const commentsData = await fetch('/data?max=' + max);
   const comments = await commentsData.json();
   const ul = document.createElement('ul');
-  for (let i = 0; i < comments.length; i++) {
+  for (const comment of comments) {
     const li = document.createElement('li');
-    li.innerText = comments[i];
+    li.innerText = comment;
     ul.appendChild(li);
   }
   document.getElementById("comments-container").innerHTML = "";
-  document.getElementById("comments-container").appendChild(ul);
+  document.getElementById('comments-container').appendChild(ul);
 }
 
 async function deleteComments() {
