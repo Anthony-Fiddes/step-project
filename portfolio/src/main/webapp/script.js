@@ -30,7 +30,7 @@ async function getComments() {
 }
 
 async function deleteComments() {
-  const response = await fetch("/delete-data", {
+  await fetch("/delete-data", {
     method: "POST",
   });
   getComments();
