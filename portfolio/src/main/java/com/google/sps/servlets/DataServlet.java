@@ -39,11 +39,11 @@ import java.util.List;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private static final String CONTENT_TYPE = "application/json";
-  private static final String MAX_COMMENTS = "max";
   private static final String COMMENT = "Comment";
   private static final String CONTENT = "content";
+  private static final String CONTENT_TYPE = "application/json";
   private static final String LANGUAGE = "language";
+  private static final String MAX_COMMENTS = "max";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
