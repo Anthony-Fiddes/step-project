@@ -21,6 +21,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateException;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 import com.google.gson.Gson;
@@ -53,7 +54,7 @@ public class DataServlet extends HttpServlet {
       maxComments = Integer.parseInt(maxContent);
     } catch (NumberFormatException e) {
       System.err.println("Could not convert to int: " + maxContent);
-      response.sendError(400, "Invalid request.");
+      response.sendError(400, "Invalid parameter \"max\" in request.");
       return;
     }
     String language = request.getParameter(LANGUAGE);
@@ -67,9 +68,15 @@ public class DataServlet extends HttpServlet {
         break;
       }
       String content = (String) entity.getProperty(CONTENT);
-      Translation translation = translate.translate(content, Translate.TranslateOption.targetLanguage(language));
-      String translatedText = translation.getTranslatedText();
-      messages.add(translatedText);
+      try {
+        Translation translation = translate.translate(content, Translate.TranslateOption.targetLanguage(language));
+        String translatedText = translation.getTranslatedText();
+        messages.add(translatedText);
+      } catch (TranslateException e) {
+        System.err.println("Invalid translation options.");
+        response.sendError(400, "Invalid translation request.");
+        return;
+      }
     }
     Gson gson = new Gson();
     String json = gson.toJson(messages);
