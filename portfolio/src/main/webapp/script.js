@@ -16,7 +16,7 @@
  * Adds comments from /data
  */
 async function getComments() {
-  max = document.getElementById('max').value
+  const max = document.getElementById('max').value;
   const commentsData = await fetch('/data?max=' + max);
   const comments = await commentsData.json();
   const ul = document.createElement('ul');
@@ -30,7 +30,7 @@ async function getComments() {
 }
 
 async function deleteComments() {
-  const response = await fetch("/delete-data", {
+  await fetch("/delete-data", {
     method: "POST",
   });
   getComments();

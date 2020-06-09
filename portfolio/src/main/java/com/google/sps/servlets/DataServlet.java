@@ -38,7 +38,8 @@ public class DataServlet extends HttpServlet {
 
   private static final String CONTENT_TYPE = "application/json";
   private static final String MAX_COMMENTS = "max";
-  private static final String COMMENT = "content";
+  private static final String COMMENT = "Comment";
+  private static final String CONTENT = "content";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -51,7 +52,7 @@ public class DataServlet extends HttpServlet {
       response.sendError(400, "Invalid request.");
       return;
     }
-    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    Query query = new Query(COMMENT).addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
     List<String> messages = new ArrayList<>();
@@ -59,7 +60,7 @@ public class DataServlet extends HttpServlet {
       if (messages.size() >= maxComments) {
         break;
       }
-      String content = (String) entity.getProperty(COMMENT);
+      String content = (String) entity.getProperty(CONTENT);
       messages.add(content);
     }
     Gson gson = new Gson();
@@ -70,14 +71,14 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String content = request.getParameter(COMMENT).trim();
+    String content = request.getParameter(CONTENT).trim();
     long timestamp = System.currentTimeMillis();
     if (content.isEmpty()) {
       System.err.println("Empty comment submitted");
       response.sendError(400, "Empty comment submitted");
       return;
     }
-    Entity commentEntity = new Entity("Comment");
+    Entity commentEntity = new Entity(COMMENT);
     commentEntity.setProperty("content", content);
     commentEntity.setProperty("timestamp", timestamp);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
