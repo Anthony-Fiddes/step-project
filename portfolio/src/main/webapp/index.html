@@ -135,6 +135,12 @@
           <option value="25">25</option>
           <option value="100">100</option>
         </select>
+        <label for="language">Language: </label>
+        <select id="language" name="language" value="EN">
+          <option value="EN">English</option>
+          <option value="ES">Spanish</option>
+          <option value="ZH">Chinese</option>
+        </select>
       </form>
       <div id="comments-container">
         <!-- the below div was sourced from loading.io/css under a CC0 license -->
@@ -153,7 +159,7 @@
         <textarea name="content" placeholder="Comment..."
                   class="comments-box"></textarea>
         <br>
-        <input type="submit" />
+        <input type="submit" value="Submit" />
         <button type="button" onClick="deleteComments()">Delete All</button>
       </form>
     </div>
