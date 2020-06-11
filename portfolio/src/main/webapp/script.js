@@ -12,6 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+var usingBlobForm = false;
+
+async function useBlobForm() {
+  if (usingBlobForm) {
+    return;
+  }
+  const form = document.getElementById('comments-form');
+  form.classList.add('hidden');
+  const blobResponse = await fetch('/blobstore-upload-url');
+  const blobURL = await blobResponse.text();
+  form.setAttribute('action', blobURL);
+  form.setAttribute('enctype', 'multipart/form-data');
+  form.classList.remove('hidden');
+  usingBlobForm = true;
+}
+
 /**
  * Adds comments from /data
  */
