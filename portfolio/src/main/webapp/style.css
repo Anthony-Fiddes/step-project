@@ -198,3 +198,7 @@ textarea, input, select, label, button {
 .hidden {
   display: none;
 }
+
+.hidden > .lds-roller {
+  display: unset;
+}

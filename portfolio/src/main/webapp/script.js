@@ -18,10 +18,9 @@ async function useBlobForm() {
   if (usingBlobForm) {
     return;
   }
-  const form = document.getElementById('comments-form');
-  form.classList.add('hidden');
   const blobResponse = await fetch('/blobstore-upload-url');
   const blobURL = await blobResponse.text();
+  const form = document.getElementById('comments-form');
   form.setAttribute('action', blobURL);
   form.setAttribute('enctype', 'multipart/form-data');
   form.classList.remove('hidden');

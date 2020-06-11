@@ -9,7 +9,7 @@
   <script src="script.js"></script>
 </head>
 
-<body onload="getComments()">
+<body onload="useBlobForm(); getComments();">
   <div id="content">
     <div class="section introduction">
       <div class="title">
@@ -143,9 +143,9 @@
         </select>
       </form>
       <br />
-      <form id="comments-form" action="/data" method="POST">
+      <form class="hidden" id="comments-form" action="/data" method="POST">
         <label for="image">Add an image: </label>
-        <input type="file" name="image" onChange="useBlobForm()" />
+        <input type="file" name="image" />
         <div id="comments-container">
           <!-- the below div was sourced from loading.io/css under a CC0 license -->
           <div class="lds-roller">
