@@ -39,7 +39,7 @@ async function getComments() {
   const ul = document.createElement('ul');
   for (const comment of comments) {
     const li = document.createElement('li');
-    li.innerText = comment;
+    li.innerText = comment.content;
     ul.appendChild(li);
   }
   document.getElementById('comments-container').innerHTML = '';

@@ -74,23 +74,26 @@ public class DataServlet extends HttpServlet {
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
+    List<Comment> comments = new ArrayList<>();
     List<String> messages = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
       if (messages.size() >= maxComments) {
         break;
       }
       String content = (String) entity.getProperty(CONTENT);
+      String imageURL = (String) entity.getProperty(CONTENT);
       messages.add(content);
+      comments.add(new Comment(content, imageURL));
     }
     try {
       List<Translation> translations = translateService.translate(messages,
           Translate.TranslateOption.targetLanguage(language));
       messages.clear();
-      for (Translation translation : translations) {
-        messages.add(translation.getTranslatedText());
+      for (int i = 0; i < comments.size(); i++) {
+        comments.get(i).content = translations.get(i).getTranslatedText();
       }
       Gson gson = new Gson();
-      String json = gson.toJson(messages);
+      String json = gson.toJson(comments);
       response.setContentType(CONTENT_TYPE);
       response.getWriter().println(json);
     } catch (TranslateException e) {
