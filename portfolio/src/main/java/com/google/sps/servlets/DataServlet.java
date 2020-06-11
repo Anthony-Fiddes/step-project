@@ -81,14 +81,13 @@ public class DataServlet extends HttpServlet {
         break;
       }
       String content = (String) entity.getProperty(CONTENT);
-      String imageURL = (String) entity.getProperty(CONTENT);
+      String imageURL = (String) entity.getProperty(IMAGE);
       messages.add(content);
       comments.add(new Comment(content, imageURL));
     }
     try {
       List<Translation> translations = translateService.translate(messages,
           Translate.TranslateOption.targetLanguage(language));
-      messages.clear();
       for (int i = 0; i < comments.size(); i++) {
         comments.get(i).content = translations.get(i).getTranslatedText();
       }

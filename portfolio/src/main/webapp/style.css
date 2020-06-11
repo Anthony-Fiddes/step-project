@@ -194,3 +194,7 @@ textarea, input, select, label, button {
   font-family: inherit;
   font-size: 1.3em;
 }
+
+.hidden {
+  display: none;
+}

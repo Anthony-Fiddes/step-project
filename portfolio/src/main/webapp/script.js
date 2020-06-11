@@ -40,6 +40,12 @@ async function getComments() {
   for (const comment of comments) {
     const li = document.createElement('li');
     li.innerText = comment.content;
+    if (comment.imageURL != null) {
+      li.appendChild(document.createElement('br'));
+      const img = document.createElement('img');
+      img.setAttribute('src', comment.imageURL);
+      li.appendChild(img);
+    }
     ul.appendChild(li);
   }
   document.getElementById('comments-container').innerHTML = '';
