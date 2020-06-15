@@ -70,7 +70,6 @@ public class DataServlet extends HttpServlet {
       return;
     }
     String language = request.getParameter(LANGUAGE);
-    Translate translateService = TranslateOptions.getDefaultInstance().getService();
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
@@ -86,10 +85,15 @@ public class DataServlet extends HttpServlet {
       comments.add(new Comment(content, imageURL));
     }
     try {
-      List<Translation> translations = translateService.translate(messages,
-          Translate.TranslateOption.targetLanguage(language));
-      for (int i = 0; i < comments.size(); i++) {
-        comments.get(i).content = translations.get(i).getTranslatedText();
+      if (comments.size() > 0) {
+        Translate translateService = TranslateOptions.getDefaultInstance().getService();
+        List<Translation> translations = translateService.translate(messages,
+            Translate.TranslateOption.targetLanguage(language));
+        for (int i = 0; i < comments.size(); i++) {
+          comments.get(i).content = translations.get(i).getTranslatedText();
+        }
+      } else {
+        comments.add(new Comment("No comments yet."));
       }
       Gson gson = new Gson();
       String json = gson.toJson(comments);
