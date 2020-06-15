@@ -81,7 +81,10 @@ public class DataServlet extends HttpServlet {
       }
       String content = (String) entity.getProperty(CONTENT);
       String imageURL = (String) entity.getProperty(IMAGE);
+      // messages is used to translate all comments in one call
       messages.add(content);
+      // comments pairs each comment with its associated image to be exported as
+      // JSON
       comments.add(new Comment(content, imageURL));
     }
     try {
