@@ -96,7 +96,7 @@ public class DataServlet extends HttpServlet {
       response.setContentType(CONTENT_TYPE);
       response.getWriter().println(json);
     } catch (TranslateException e) {
-      System.err.println("Invalid translation options.");
+      System.err.println(e.getMessage());
       response.sendError(400, "Invalid translation request.");
       return;
     }

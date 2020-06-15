@@ -12,4 +12,9 @@ public class Comment {
 		this(content);
 		this.imageURL = imageURL;
 	}
+
+	@Override
+	public String toString() {
+		return this.content;
+	}
 }

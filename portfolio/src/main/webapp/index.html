@@ -6,10 +6,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap"
         rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lds-roller-style.css">
   <script src="script.js"></script>
 </head>
 
-<body onload="useBlobForm(); getComments();">
+<body onload="onPageLoad()">
   <div id="content">
     <div class="section introduction">
       <div class="title">
@@ -161,7 +162,6 @@
         </div>
         <textarea name="content" placeholder="Comment..."
                   class="comments-box"></textarea>
-        <br>
         <br />
         <input type="submit" value="Submit" />
         <button type="button" onClick="deleteComments()">Delete All</button>

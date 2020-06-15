@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var usingBlobForm = false;
+function onPageLoad() {
+  useBlobForm();
+  getComments();
+}
 
 async function useBlobForm() {
-  if (usingBlobForm) {
-    return;
-  }
   const blobResponse = await fetch('/blobstore-upload-url');
   const blobURL = await blobResponse.text();
   const form = document.getElementById('comments-form');
@@ -39,7 +39,7 @@ async function getComments() {
   for (const comment of comments) {
     const li = document.createElement('li');
     li.innerText = comment.content;
-    if (comment.imageURL != null) {
+    if (comment.imageURL) {
       li.appendChild(document.createElement('br'));
       const img = document.createElement('img');
       img.setAttribute('src', comment.imageURL);
