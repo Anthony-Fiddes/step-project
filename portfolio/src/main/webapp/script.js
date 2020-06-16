@@ -24,7 +24,6 @@ async function useBlobForm() {
   form.setAttribute('action', blobURL);
   form.setAttribute('enctype', 'multipart/form-data');
   form.classList.remove('hidden');
-  usingBlobForm = true;
 }
 
 /**
