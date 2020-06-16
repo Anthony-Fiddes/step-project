@@ -6,10 +6,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap"
         rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lds-roller-style.css">
   <script src="script.js"></script>
 </head>
 
-<body onload="getComments()">
+<body onload="onPageLoad()">
   <div id="content">
     <div class="section introduction">
       <div class="title">
@@ -142,23 +143,26 @@
           <option value="ZH">Chinese</option>
         </select>
       </form>
-      <div id="comments-container">
-        <!-- the below div was sourced from loading.io/css under a CC0 license -->
-        <div class="lds-roller">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+      <br />
+      <form class="hidden" id="comments-form" action="/data" method="POST">
+        <label for="image">Add an image: </label>
+        <input type="file" name="image" />
+        <div id="comments-container">
+          <!-- the below div was sourced from loading.io/css under a CC0 license -->
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
-      </div>
-      <form action="/data" method="POST">
         <textarea name="content" placeholder="Comment..."
                   class="comments-box"></textarea>
-        <br>
+        <br />
         <input type="submit" value="Submit" />
         <button type="button" onClick="deleteComments()">Delete All</button>
       </form>
