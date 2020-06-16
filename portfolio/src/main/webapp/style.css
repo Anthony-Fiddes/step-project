@@ -19,24 +19,29 @@
   text-decoration: none;
 }
 
+.title-icon {
+  width: 3em;
+  margin-left: 1em;
+}
+
 .avatar {
   width: 20em;
 }
 
 .introduction{
-    background-color: #FAEBD7;
+  background-color: #FAEBD7;
 }
 
 .education{
-    background-color: #F5DEB3;
+  background-color: #F5DEB3;
 }
 
 .experience{
-    background-color: #CEB088;
+  background-color: #CEB088;
 }
 
 .projects{
-    background-color: #967A76;
+  background-color: #967A76;
 }
 
 .comments-box {
@@ -44,17 +49,12 @@
 }
 
 .fun-stuff{
-    background-color: #534C5A;
-    color: #534C5A;
+  background-color: #534C5A;
+  color: #534C5A;
 }
 
 .fun-stuff:hover{
   color: white;
-}
-
-.title-icon {
-  width: 3em;
-  margin-left: 1em;
 }
 
 /* elements */
@@ -78,11 +78,19 @@ h3 {
 }
 
 p, li {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.5em;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
 }
 
-textarea, input {
+textarea, input, select, label, button {
   font-family: inherit;
-  font-size: inherit;
+  font-size: 1.3em;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden > .lds-roller {
+  display: unset;
 }
