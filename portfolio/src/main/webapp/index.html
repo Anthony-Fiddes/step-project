@@ -6,10 +6,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap"
         rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lds-roller-style.css">
   <script src="script.js"></script>
 </head>
 
-<body onload="getComments()">
+<body onload="onPageLoad()">
   <div id="content">
     <div class="section introduction">
       <div class="title">
@@ -135,13 +136,34 @@
           <option value="25">25</option>
           <option value="100">100</option>
         </select>
+        <label for="language">Language: </label>
+        <select id="language" name="language" value="EN">
+          <option value="EN">English</option>
+          <option value="ES">Spanish</option>
+          <option value="ZH">Chinese</option>
+        </select>
       </form>
-      <div id="comments-container"></div>
-      <form action="/data" method="POST">
+      <br />
+      <form class="hidden" id="comments-form" action="/data" method="POST">
+        <label for="image">Add an image: </label>
+        <input type="file" name="image" />
+        <div id="comments-container">
+          <!-- the below div was sourced from loading.io/css under a CC0 license -->
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
         <textarea name="content" placeholder="Comment..."
                   class="comments-box"></textarea>
-        <br>
-        <input type="submit" />
+        <br />
+        <input type="submit" value="Submit" />
         <button type="button" onClick="deleteComments()">Delete All</button>
       </form>
     </div>
@@ -149,8 +171,9 @@
       <h1>Fun Stuff</h1>
       <p>
         You made it all the way to the bottom of my portfolio! Stay skeptical,
-        sometimes the fun things in life require a bit of digging :). Here are
-        some things I probably wouldn’t include on a regular resume!
+        sometimes the fun things in life require a bit of
+        digging :). Here are some things I probably wouldn’t include on a
+        regular resume!
       <ul>
         <li>At my Google internship in Chicago, I learned how to juggle
         <li>I enjoy playing DnD, particularly homebrew versions
