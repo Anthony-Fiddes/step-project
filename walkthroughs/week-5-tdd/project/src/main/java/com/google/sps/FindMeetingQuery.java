@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,7 @@ public final class FindMeetingQuery {
   public Collection<TimeRange> query(final Collection<Event> events, final MeetingRequest request) {
     Collection<TimeRange> queryRanges = new ArrayList<>();
     queryRanges.add(TimeRange.fromStartEnd(TimeRange.START_OF_DAY, TimeRange.END_OF_DAY, true));
-    Map<Event, Map<MeetingRequest, Boolean>> cache = new HashMap<>();
+    Map<Event, Boolean> cache = new HashMap<>();
     for (Event event : events) {
       Collection<TimeRange> nextRanges = new ArrayList<>();
       for (TimeRange range : queryRanges) {
@@ -59,25 +60,20 @@ public final class FindMeetingQuery {
     return resultRanges;
   }
 
-  private boolean hasOverlappingAttendees(Event event, MeetingRequest request,
-      Map<Event, Map<MeetingRequest, Boolean>> cache) {
-    Map<MeetingRequest, Boolean> overlappingRequests = cache.get(event);
-    if (overlappingRequests == null) {
-      overlappingRequests = new HashMap<>();
-      cache.put(event, overlappingRequests);
-    }
-    Boolean isOverlapping = overlappingRequests.get(request);
+  private boolean hasOverlappingAttendees(Event event, MeetingRequest request, Map<Event, Boolean> cache) {
+    Boolean isOverlapping = cache.get(event);
     if (isOverlapping == null) {
       isOverlapping = hasOverlappingAttendees(event, request);
-      overlappingRequests.put(request, isOverlapping);
+      cache.put(event, isOverlapping);
     }
     return isOverlapping;
   }
 
   private boolean hasOverlappingAttendees(Event event, MeetingRequest request) {
-    Set<String> eventAttendees = new HashSet<>(event.getAttendees());
-    Set<String> reqAttendees = new HashSet<>(request.getAttendees());
-    for (String attendee : reqAttendees) {
+    Set<String> eventAttendees = event.getAttendees();
+    Iterator<String> reqAttendeesIter = request.getAttendees().iterator();
+    while (reqAttendeesIter.hasNext()) {
+      String attendee = reqAttendeesIter.next();
       if (eventAttendees.contains(attendee)) {
         return true;
       }
